@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <meta name="theme-color" content="#111816">
+  <title>Dead House — Last Light</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="game" aria-label="First person game view"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div id="hud" class="hud hidden" aria-live="off">
+    <div class="hud-top"><div class="wordmark">DH <span> / LAST LIGHT</span></div><div class="wave-label">NIGHT <strong id="hud-wave">01</strong></div><div class="cash"><span>SCRAP</span> $<b id="hud-money">0</b></div></div>
+    <div id="crosshair" class="crosshair" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+    <div id="hit-marker" class="hit-marker" aria-hidden="true">×</div>
+    <div id="damage-overlay" class="damage-overlay" aria-hidden="true"></div>
+    <div id="wave-banner" class="wave-banner" aria-live="polite"></div>
+    <div id="message" class="message" aria-live="polite"></div>
+    <div id="prompt" class="prompt"></div>
+    <div class="hud-bottom"><div class="vitals"><div class="hud-label">VITALS <strong id="hud-health">100</strong></div><div class="meter"><span id="health-bar"></span></div><div class="hud-label stamina-label">STAMINA</div><div class="meter stamina"><span id="stamina-bar"></span></div></div><div class="hud-help">[WASD] MOVE <span>·</span> [SHIFT] SPRINT <span>·</span> [R] RELOAD <span>·</span> [Q] SWITCH <span>·</span> [E] INTERACT</div><div class="ammo"><div id="hud-weapon" class="hud-label">PISTOL</div><div><strong id="hud-ammo">0</strong><span class="ammo-slash"> / </span><span id="hud-reserve">0</span></div></div></div>
+  </div>
+  <main id="menu" class="screen menu-screen">
+    <div class="menu-wrap"><div class="eyebrow"><span class="red-dot"></span> AN OUTBREAK SURVIVAL EXPERIENCE</div><h1>DEAD<br><em>HOUSE</em></h1><p class="tagline">THE LIGHTS ARE STILL ON.<br>THEY KNOW YOU'RE INSIDE.</p><div class="menu-rule"></div><p class="menu-copy">Hold the house. Scavenge scrap. Make every shot count.</p><button id="start-button" class="primary">ENTER THE HOUSE <span>→</span></button><div class="settings-block"><label for="menu-sensitivity">MOUSE SENSITIVITY <output class="sensitivity-value">0.10°</output></label><input id="menu-sensitivity" class="sensitivity" type="range" min="0.03" max="0.30" step="0.01" value="0.10"><div class="range-label"><span>PRECISE</span><span>FAST</span></div></div><div class="controls-grid"><div><kbd>W A S D</kbd><span>MOVE</span></div><div><kbd>SHIFT</kbd><span>SPRINT</span></div><div><kbd>MOUSE</kbd><span>LOOK / FIRE · RIGHT: AIM</span></div><div><kbd>R / Q</kbd><span>RELOAD / SWITCH</span></div><div><kbd>E</kbd><span>STASH / REPAIR</span></div><div><kbd>ESC</kbd><span>PAUSE</span></div></div><p class="desktop-note">DESKTOP BROWSER · CLICK TO CAPTURE MOUSE</p></div>
+    <div class="menu-aside" aria-hidden="true"><div class="aside-number">01</div><div class="aside-line"></div><p>ONE HOUSE.<br>NO WAY OUT.<br>HOW LONG CAN YOU HOLD?</p></div>
+  </main>
+  <section id="pause" class="screen overlay hidden" aria-labelledby="pause-title"><div class="panel"><div class="eyebrow">TAKE A BREATH</div><h2 id="pause-title">PAUSED<span>.</span></h2><p>The house can wait. The dead won't.</p><div class="settings-block"><label for="pause-sensitivity">MOUSE SENSITIVITY <output class="sensitivity-value">0.10°</output></label><input id="pause-sensitivity" class="sensitivity" type="range" min="0.03" max="0.30" step="0.01" value="0.10"><div class="range-label"><span>PRECISE</span><span>FAST</span></div></div><button id="resume-button" class="primary">RESUME <span>→</span></button><small>Click resume to recapture the mouse.</small></div></section>
+  <section id="shop" class="screen overlay hidden" aria-labelledby="shop-title"><div class="panel shop-panel"><div class="shop-head"><div><div class="eyebrow">SURVIVAL SUPPLIES</div><h2 id="shop-title">THE STASH<span>.</span></h2><p>Invest in the next stand.</p></div><div class="shop-money"><span>AVAILABLE SCRAP</span><strong>$<b id="shop-money">0</b></strong></div></div><p class="shop-scroll-hint">SCROLL FOR ALL SUPPLIES ↓</p><div id="shop-items" class="shop-items" tabindex="0" aria-label="Supplies; scroll to see all items"></div><div id="shop-status" class="shop-status" role="status" aria-live="polite"></div><button id="close-shop" class="secondary">CLOSE STASH <span>ESC / E</span></button></div></section>
+  <section id="game-over" class="screen overlay hidden" aria-labelledby="over-title"><div class="panel"><div class="eyebrow">THE HOUSE FALLS QUIET</div><h2 id="over-title">YOU DIED<span>.</span></h2><p>Every night leaves a mark.</p><div class="results"><div><strong id="result-wave">0</strong><span>NIGHTS REACHED</span></div><div><strong id="result-kills">0</strong><span>INFECTED KILLED</span></div></div><button id="restart-button" class="primary">TRY AGAIN <span>→</span></button></div></section>
+  <script type="module" src="src/game.js"></script>
+</body>
+</html>
